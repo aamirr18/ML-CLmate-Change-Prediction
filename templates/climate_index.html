@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html >
+<!--From https://codepen.io/frytyler/pen/EGdtg-->
+<head>
+  <meta charset="UTF-8">
+  <title>ML API</title>
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style_1.css') }}">
+  
+</head>
+
+<body style="background-color:powderblue;">
+ <div class="login">
+	<h1>Yield for a Particular Crop</h1>
+
+     <!-- Main Input For Receiving Query to our ML -->
+    <form action="{{ url_for('predict')}}"method="post">
+      <p>Please give the value for average rainfall between 51.0 and 3240.0</p>
+    	<input type="text" name="average_rain_fall_mm_per_year" placeholder="average_rain_fall_mm_per_year" required="required" />
+      <p>Please give value for the Pesticides used in Tonnes between 0.04 and 367778.0</p>
+        <input type="text" name="pesticides_tonnes" placeholder="pesticides_tonnes" required="required" />
+          <p>Please give value for Temperature between 1.30 and 30.65</p>
+          <input type="text" name="avg_temp" placeholder="avg_temp" required="required" />
+            <p>Please give value as 1 for the selected country and 0 for the remaining</p>
+            <input type="text" name="Country_Albania" placeholder="Country_Albania" required="required" />
+              <input type="text" name="Country_Algeria" placeholder="Country_Algeria" required="required" />
+               <input type="text" name="Country_Angola" placeholder="Country_Angola" required="required" />
+                <input type="text" name="Country_Argentina" placeholder="Country_Argentina" required="required" />
+                  <input type="text" name="Country_Armenia" placeholder="Country_Armenia" required="required" />
+                    <input type="text" name="Country_Australia" placeholder="Country_Australia" required="required" />
+                      <input type="text" name="Country_Austria" placeholder="Country_Austria" required="required" />
+                        <input type="text" name="Country_Azerbaijan" placeholder="Country_Azerbaijan" required="required" />
+                        <input type="text" name="Country_Bahamas" placeholder="Country_Bahamas" required="required" />
+                        <input type="text" name="Country_Bahrain" placeholder="Country_Bahrain" required="required" />
+                        <input type="text" name="Country_Bangladesh" placeholder="Country_Bangladesh" required="required" />
+                        <input type="text" name="Country_Belarus" placeholder="Country_Belarus" required="required" />
+                        <input type="text" name="Country_Belgium" placeholder="Country_Belgium" required="required" />
+                        <input type="text" name="Country_Botswana" placeholder="Country_Botswana" required="required" />
+                        <input type="text" name="Country_Brazil" placeholder="Country_Brazil" required="required" />
+                        <input type="text" name="Country_Bulgaria" placeholder="Country_Bulgaria" required="required" />
+                        <input type="text" name="Country_Burkina Faso" placeholder="Country_Burkina Faso" required="required" />
+                        <input type="text" name="Country_Burundi" placeholder="Country_Burundi" required="required" />
+                        <input type="text" name="Country_Cameroon" placeholder="Country_Cameroon" required="required" />
+                        <input type="text" name="Country_Canada" placeholder="Country_Canada" required="required" />
+                        <input type="text" name="Country_Central African Republic" placeholder="Country_Central African Republic" required="required" />
+                        <input type="text" name="Country_Chile" placeholder="Country_Chile" required="required" />
+                        <input type="text" name="Country_Colombia" placeholder="Country_Colombia" required="required" />
+                        <input type="text" name="Country_Croatia" placeholder="Country_Croatia" required="required" />
+                        <input type="text" name="Country_Denmark" placeholder="Country_Denmark" required="required" />
+                        <input type="text" name="Country_Dominican Republic" placeholder="Country_Dominican Republic" required="required" />
+                        <input type="text" name="Country_Ecuador" placeholder="Country_Ecuador" required="required" />
+                        <input type="text" name="Country_Egypt" placeholder="Country_Egypt" required="required" />
+                        <input type="text" name="Country_El Salvador" placeholder="Country_El Salvador" required="required" />
+                        <input type="text" name="Country_Eritrea" placeholder="Country_Eritrea" required="required" />
+                        <input type="text" name="Country_Estonia" placeholder="Country_Estonia" required="required" />
+                        <input type="text" name="Country_Finland" placeholder="Country_Finland" required="required" />
+                        <input type="text" name="Country_France" placeholder="Country_France" required="required" />
+                        <input type="text" name="Country_Germany" placeholder="Country_Germany" required="required" />
+                        <input type="text" name="Country_Ghana" placeholder="Country_Ghana" required="required" />
+                        <input type="text" name="Country_Greece" placeholder="Country_Greece" required="required" />
+                        <input type="text" name="Country_Guatemala" placeholder="Country_Guatemala" required="required" />
+                        <input type="text" name="Country_Guinea" placeholder="Country_Guinea" required="required" />
+                        <input type="text" name="Country_Guyana" placeholder="Country_Guyana" required="required" />
+                        <input type="text" name="Country_Haiti" placeholder="Country_Haiti" required="required" />
+                        <input type="text" name="Country_Honduras" placeholder="Country_Honduras" required="required" />
+                        <input type="text" name="Country_Hungary" placeholder="Country_Hungary" required="required" />
+                        <input type="text" name="Country_India" placeholder="Country_India" required="required" />
+                        <input type="text" name="Country_Indonesia" placeholder="Country_Indonesia" required="required" />
+                        <input type="text" name="Country_Iraq" placeholder="Country_Iraq" required="required" />
+                        <input type="text" name="Country_Ireland" placeholder="Country_Ireland" required="required" />
+                        <input type="text" name="Country_Italy" placeholder="Country_Italy" required="required" />
+                        <input type="text" name="Country_Jamaica" placeholder="Country_Jamaica" required="required" />
+                        <input type="text" name="Country_Japan" placeholder="Country_Japan" required="required" />
+                        <input type="text" name="Country_Kazakhstan" placeholder="Country_Kazakhstan" required="required" />
+                        <input type="text" name="Country_Kenya" placeholder="Country_Kenya" required="required" />
+                        <input type="text" name="Country_Latvia" placeholder="Country_Latvia" required="required" />
+                        <input type="text" name="Country_Lebanon" placeholder="Country_Lebanon" required="required" />
+                        <input type="text" name="Country_Lesotho" placeholder="Country_Lesotho" required="required" />
+                        <input type="text" name="Country_Libya" placeholder="Country_Libya" required="required" />
+                        <input type="text" name="Country_Lithuania" placeholder="Country_Lithuania" required="required" />
+                        <input type="text" name="Country_Madagascar" placeholder="Country_Madagascar" required="required" />
+                        <input type="text" name="Country_Malawi" placeholder="Country_Malawi" required="required" />
+                        <input type="text" name="Country_Malaysia" placeholder="Country_Malaysia" required="required" />
+                        <input type="text" name="Country_Mali" placeholder="Country_Mali" required="required" />
+                        <input type="text" name="Country_Mauritania" placeholder="Country_Mauritania" required="required" />
+                        <input type="text" name="Country_Mauritius" placeholder="Country_Mauritius" required="required" />
+                        <input type="text" name="Country_Mexico" placeholder="Country_Mexico" required="required" />
+                        <input type="text" name="Country_Montenegro" placeholder="Country_Montenegro" required="required" />
+                        <input type="text" name="Country_Morocco" placeholder="Country_Morocco" required="required" />
+                        <input type="text" name="Country_Mozambique" placeholder="Country_Mozambique" required="required" />
+                        <input type="text" name="Country_Namibia" placeholder="Country_Namibia" required="required" />
+                        <input type="text" name="Country_Nepal" placeholder="Country_Nepal" required="required" />
+                        <input type="text" name="Country_Netherlands" placeholder="Country_Netherlands" required="required" />
+                        <input type="text" name="Country_New Zealand" placeholder="Country_New Zealand" required="required" />
+                        <input type="text" name="Country_Nicaragua" placeholder="Country_Nicaragua" required="required" />
+                        <input type="text" name="Country_Niger" placeholder="Country_Niger" required="required" />
+                        <input type="text" name="Country_Norway" placeholder="Country_Norway" required="required" />
+                        <input type="text" name="Country_Pakistan" placeholder="Country_Pakistan" required="required" />
+                        <input type="text" name="Country_Papua New Guinea" placeholder="Country_Papua New Guinea" required="required" />
+                        <input type="text" name="Country_Peru" placeholder="Country_Peru" required="required" />
+                        <input type="text" name="Country_Poland" placeholder="Country_Poland" required="required" />
+                        <input type="text" name="Country_Portugal" placeholder="Country_Portugal" required="required" />
+                        <input type="text" name="Country_Qatar" placeholder="Country_Qatar" required="required" />
+                        <input type="text" name="Country_Romania" placeholder="Country_Romania" required="required" />
+                        <input type="text" name="Country_Rwanda" placeholder="Country_Rwanda" required="required" />
+                        <input type="text" name="Country_Saudi Arabia" placeholder="Country_Saudi Arabia" required="required" />
+                        <input type="text" name="Country_Senegal" placeholder="Country_Senegal" required="required" />
+                        <input type="text" name="Country_Slovenia" placeholder="Country_Slovenia" required="required" />
+                        <input type="text" name="Country_South Africa" placeholder="Country_South Africa" required="required" />
+                        <input type="text" name="Country_Spain" placeholder="Country_Spain" required="required" />
+                        <input type="text" name="Country_Sri Lanka" placeholder="Country_Sri Lanka" required="required" />
+                        <input type="text" name="Country_Sudan" placeholder="Country_Sudan" required="required" />
+                        <input type="text" name="Country_Suriname" placeholder="Country_Suriname" required="required" />
+                        <input type="text" name="Country_Sweden" placeholder="Country_Sweden" required="required" />
+                        <input type="text" name="Country_Switzerland" placeholder="Country_Switzerland" required="required" />
+                        <input type="text" name="Country_Tajikistan" placeholder="Country_Tajikistan" required="required" />
+                        <input type="text" name="Country_Thailand" placeholder="Country_Thailand" required="required" />
+                        <input type="text" name="Country_Tunisia" placeholder="Country_Tunisia" required="required" />
+                        <input type="text" name="Country_Turkey" placeholder="Country_Turkey" required="required" />
+                        <input type="text" name="Country_Uganda" placeholder="Country_Uganda" required="required" />
+                        <input type="text" name="Country_Ukraine" placeholder="Country_Ukraine" required="required" />
+                        <input type="text" name="Country_United Kingdom" placeholder="Country_United Kingdom" required="required" />
+                        <input type="text" name="Country_Uruguay" placeholder="Country_Uruguay" required="required" />
+                        <input type="text" name="Country_Zambia" placeholder="Country_Zambia" required="required" />
+                        <input type="text" name="Country_Zimbabwe" placeholder="Country_Zimbabwe" required="required" />
+                        <p>Please give value as 1 for the selected Plantation and 0 for the remaining</p>
+                        <input type="text" name="Item_Cassava" placeholder="Cassava" required="required" />
+                        <input type="text" name="Item_Maize" placeholder="Maize" required="required" />
+                        <input type="text" name="Item_Plantains and others" placeholder="Plantains and others" required="required" />
+                        <input type="text" name="Item_Potatoes" placeholder="Item_Potatoes" required="required" />
+                        <input type="text" name="Item_Rice, paddy" placeholder="Item_Rice, paddy" required="required" />
+                        <input type="text" name="Item_Sorghum" placeholder="Item_Sorghum" required="required" />
+                        <input type="text" name="Item_Soybeans" placeholder="Item_Soybeans" required="required" />
+                        <input type="text" name="Item_Sweet potatoes" placeholder="Item_Sweet potatoes" required="required" />
+                        <input type="text" name="Item_Wheat" placeholder="Item_Wheat" required="required" />
+                        <input type="text" name="Item_Yams" placeholder="Item_Yams" required="required" />
+      
+
+        <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+    </form>
+
+   <br>
+   <br>
+   <p>Click the "Predict" button after entering all values. And it will predict the Yield in hectogram per hectare (Hg/Ha)</p>
+
+ </div>
+
+
+</body>
+</html>
